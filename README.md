@@ -73,11 +73,6 @@ Update the placeholders in `index.html`:
 - Your actual GitHub links in `projects.js` (replace the `#` hrefs)
 - Your real email, GitHub, and LinkedIn in `contact.js`
 
-## What I'd add next
-
-- A downloadable PDF version of the resume
-- A dark/light theme toggle
-- An actual contact form
 
 ## Author
 
