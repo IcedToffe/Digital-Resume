@@ -128,6 +128,7 @@ async function loadGitHubStats() {
   const section = document.getElementById("githubStats");
   const status = document.getElementById("githubStatus");
   const grid = document.getElementById("githubGrid");
+  const skeleton = document.getElementById("githubSkeleton");
   const username = section.dataset.username;
 
   try {
@@ -157,11 +158,13 @@ async function loadGitHubStats() {
     `;
 
     status.textContent = `@${username} on GitHub since ${new Date(user.created_at).getFullYear()}.`;
+    skeleton.hidden = true;
     grid.hidden = false;
   } catch (err) {
     status.textContent =
-      `Hindi makuha ang GitHub data para kay "${username}". ` +
-      `Siguraduhing tama ang username sa data-username attribute ng #githubStats.`;
+      `Couldn't load GitHub data for "${username}". ` +
+      `Double check the data-username attribute on #githubStats.`;
+    skeleton.hidden = true;
     console.error("GitHub stats failed:", err);
   }
 }
@@ -200,23 +203,23 @@ const demoRunners = {
 };
 
 const skillLabels = {
-  html: "🎮 HTML — dinaan sa live typing",
-  css: "🎮 CSS Animation — panoorin mo",
-  js: "🎮 JavaScript — subukan mo mismo",
-  responsive: "🎮 Responsive Design — i-drag ang slider",
-  git: "🎮 Git & GitHub — parang totoong terminal",
-  sort: "🎮 Problem Solving — bubble sort in action",
+  html: "HTML — typed out live",
+  css: "CSS Animation — watch it run",
+  js: "JavaScript — try it yourself",
+  responsive: "Responsive Design — drag the slider",
+  git: "Git & GitHub — like a real terminal",
+  sort: "Problem Solving — bubble sort in action",
 };
 
 document.getElementById("skillsGrid").addEventListener("click", (e) => {
-  const item = e.target.closest(".skill-sticker");
+  const item = e.target.closest(".skill-card");
   if (!item) return;
 
-  document.querySelectorAll(".skill-sticker").forEach((el) => el.classList.remove("active"));
+  document.querySelectorAll(".skill-card").forEach((el) => el.classList.remove("active"));
   item.classList.add("active");
 
   demoPanel.hidden = false;
-  demoTitle.textContent = skillLabels[item.dataset.skill] || "🎮 Tara, subukan!";
+  demoTitle.textContent = skillLabels[item.dataset.skill] || "Try it";
   demoBody.innerHTML = "";
 
   const runner = demoRunners[item.dataset.skill];
@@ -227,7 +230,28 @@ document.getElementById("skillsGrid").addEventListener("click", (e) => {
 
 closeDemo.addEventListener("click", () => {
   demoPanel.hidden = true;
-  document.querySelectorAll(".skill-sticker").forEach((el) => el.classList.remove("active"));
+  document.querySelectorAll(".skill-card").forEach((el) => el.classList.remove("active"));
+});
+
+// ---------- Project filters ----------
+// Tag-based filtering: each project card carries a data-tags attribute,
+// and clicking a chip shows only matching cards ("all" shows everything).
+
+const projectFilters = document.getElementById("projectFilters");
+const projectCards = document.querySelectorAll("#projectsGrid .project-card");
+
+projectFilters.addEventListener("click", (e) => {
+  const chip = e.target.closest(".filter-chip");
+  if (!chip) return;
+
+  projectFilters.querySelectorAll(".filter-chip").forEach((el) => el.classList.remove("active"));
+  chip.classList.add("active");
+
+  const filter = chip.dataset.filter;
+  projectCards.forEach((card) => {
+    const tags = card.dataset.tags || "";
+    card.style.display = filter === "all" || tags.includes(filter) ? "" : "none";
+  });
 });
 
 // Small helper: types text into an element one character at a time,
