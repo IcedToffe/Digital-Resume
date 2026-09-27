@@ -81,4 +81,4 @@ Update the placeholders in `index.html`:
 
 ## Author
 
-Built by [your name] — 4th year IT student.
+Built by Milo ^_^
