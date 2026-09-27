@@ -7,29 +7,30 @@
   --sunny: #FFC738;
   --grass: #3F9142;
   --white: #FFFFFF;
+  --line: #E4DDCB;
   --font-display: "Baloo 2", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
-/* Dark theme: same accent colors (keeps the sticker vibe), but the
-   page background and card surfaces flip to a deep plum instead of
-   inverting to plain black/white. */
 body[data-theme="dark"] {
   --paper: #1E1830;
   --ink: #FFF9EE;
   --ink-soft: #C9C0DE;
   --white: #2C2447;
+  --line: #3E3560;
 }
 
-body[data-theme="dark"] .skill--sunny { color: var(--ink); }
-body[data-theme="dark"] .sticker,
+body[data-theme="dark"] .sticker--hero,
+body[data-theme="dark"] .content-card,
 body[data-theme="dark"] .demo-panel,
 body[data-theme="dark"] .frame-card,
 body[data-theme="dark"] .counter-btn,
 body[data-theme="dark"] .run-btn,
 body[data-theme="dark"] .pill,
-body[data-theme="dark"] .form-input {
-  border-color: var(--sunny);
+body[data-theme="dark"] .form-input,
+body[data-theme="dark"] .skill-card,
+body[data-theme="dark"] .filter-chip {
+  border-color: var(--line);
 }
 
 * { box-sizing: border-box; }
@@ -42,37 +43,23 @@ body {
 }
 
 main {
-  max-width: 44rem;
+  max-width: 42rem;
   margin: 0 auto;
   padding: 3rem 1.25rem 4rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2.25rem;
 }
 
-/* ---------- Sticker base ---------- */
-
-.sticker {
-  background: var(--white);
-  border: 3px solid var(--ink);
-  border-radius: 18px;
-  padding: 1.75rem 1.6rem;
-  box-shadow: 5px 5px 0 var(--ink);
-}
-
-.tilt-a { transform: rotate(-1.3deg); }
-.tilt-b { transform: rotate(1.1deg); }
-
-.sticker:hover, .project-card:hover {
-  transform: rotate(0deg) translateY(-2px);
-}
-
-.sticker, .project-card {
-  transition: transform 0.15s ease;
-}
+/* ---------- Hero: the one loud element on the page ---------- */
 
 .sticker--hero {
   background: var(--sunny);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  padding: 1.9rem 1.7rem;
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: rotate(-1deg);
 }
 
 .sticker--hero h1 {
@@ -80,6 +67,7 @@ main {
   font-weight: 800;
   font-size: clamp(1.8rem, 6vw, 2.6rem);
   margin: 0 0 0.5rem;
+  color: var(--ink);
 }
 
 .hero-role {
@@ -95,10 +83,19 @@ main {
   max-width: 32rem;
 }
 
-.sticker h2 {
+/* ---------- Content cards: calm, no tilt, thin border ---------- */
+
+.content-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.6rem 1.5rem;
+}
+
+.content-card h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   margin: 0 0 0.7rem;
 }
 
@@ -114,71 +111,63 @@ main {
   color: var(--ink-soft);
 }
 
-/* ---------- Section titles (outside sticker cards) ---------- */
-
 .section-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.6rem;
-  margin: 0 0 1.2rem;
-  text-align: center;
+  font-size: 1.5rem;
+  margin: 0 0 1.1rem;
 }
 
 /* ---------- Skills grid ---------- */
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
 }
 
-.skill-sticker {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
+.skill-card {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
   color: var(--ink);
-  border: 3px solid var(--ink);
-  border-radius: 14px;
-  padding: 1.1rem 0.8rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--coral);
+  border-radius: 8px;
+  padding: 0.85rem 0.9rem;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-align: left;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.skill-emoji { font-size: 1.6rem; }
+.skill-card[data-accent="sky"] { border-left-color: var(--sky); }
+.skill-card[data-accent="grass"] { border-left-color: var(--grass); }
+.skill-card[data-accent="sunny"] { border-left-color: var(--sunny); }
 
-.skill--coral { background: var(--coral); color: var(--white); }
-.skill--sky { background: var(--sky); color: var(--white); }
-.skill--sunny { background: var(--sunny); }
-.skill--grass { background: var(--grass); color: var(--white); }
-
-.skill-sticker:hover {
-  transform: rotate(0deg) translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--ink);
+.skill-card:hover {
+  box-shadow: 3px 3px 0 var(--line);
+  transform: translate(-1px, -1px);
 }
 
-.skill-sticker.active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--ink);
+.skill-card.active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+  background: var(--paper);
 }
 
-.skill-sticker:focus-visible {
+.skill-card:focus-visible {
   outline: 3px solid var(--ink);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 /* ---------- Demo panel ---------- */
 
 .demo-panel {
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   background: var(--white);
-  border: 3px solid var(--ink);
-  border-radius: 16px;
-  box-shadow: 5px 5px 0 var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -188,7 +177,7 @@ main {
   justify-content: space-between;
   padding: 0.7rem 1.1rem;
   background: var(--ink);
-  color: var(--white);
+  color: var(--paper);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.95rem;
@@ -197,7 +186,7 @@ main {
 .demo-header button {
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--paper);
   font-size: 1rem;
   cursor: pointer;
 }
@@ -250,19 +239,19 @@ main {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 8px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
   font-size: 1.2rem;
   cursor: pointer;
 }
 
-.counter-btn:hover { background: var(--sunny); }
+.counter-btn:hover { border-color: var(--coral); }
 
 .frame-slider { width: 100%; margin-bottom: 1rem; }
 
 .frame-preview {
-  border: 2px dashed var(--ink-soft);
+  border: 1px dashed var(--ink-soft);
   border-radius: 10px;
   padding: 0.9rem;
   display: flex;
@@ -274,7 +263,7 @@ main {
 .frame-card {
   flex: 1 1 6rem;
   background: var(--paper);
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.7rem;
   font-size: 0.8rem;
@@ -305,92 +294,136 @@ main {
   font-size: 0.9rem;
   padding: 0.6rem 1.1rem;
   border-radius: 10px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--ink);
   background: var(--paper);
   cursor: pointer;
 }
 
-.run-btn:hover { background: var(--sunny); }
+.run-btn:hover { border-color: var(--coral); }
 .run-btn:disabled { opacity: 0.5; cursor: default; }
 
 /* ---------- Projects ---------- */
 
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.filter-chip {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.filter-chip.active {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--sunny);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.1rem;
 }
 
 .project-card {
   display: block;
   text-decoration: none;
   color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.4rem 1.4rem;
+  transition: border-color 0.12s ease;
 }
+
+.project-card:hover { border-color: var(--coral); }
 
 .project-card h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   margin: 0 0 0.4rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0;
+}
+
+.project-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
 }
 
 .project-link {
   display: inline-block;
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
   font-weight: 600;
   color: var(--coral);
 }
 
 /* ---------- Contact ---------- */
 
-.sticker--contact { background: var(--sky); color: var(--white); }
-.sticker--contact h2 { color: var(--white); }
+.content-card--contact { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.content-card--contact h2 { color: var(--paper); }
 
 .contact-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .pill {
-  background: var(--white);
+  background: var(--paper);
   color: var(--ink);
   font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.95rem;
   border-radius: 999px;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--paper);
   text-decoration: none;
 }
 
 .pill:hover { background: var(--sunny); }
 
-/* ---------- Status badge ---------- */
+/* ---------- Status badge (the one place emoji earns its keep) ---------- */
 
 .status-badge {
   display: inline-block;
   margin-top: 0.8rem;
   padding: 0.35rem 0.8rem;
   background: var(--white);
-  border: 2px solid var(--ink);
+  border: 1px solid var(--ink);
   border-radius: 999px;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.85rem;
 }
 
-/* ---------- Currently learning ---------- */
-
-.sticker--learning { background: #F0E6FF; }
-body[data-theme="dark"] .sticker--learning { background: var(--white); }
-
 /* ---------- Skill growth bars ---------- */
 
 .skill-bars {
-  margin-top: 1.75rem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.65rem;
 }
 
 .skill-bar-row {
@@ -407,9 +440,9 @@ body[data-theme="dark"] .sticker--learning { background: var(--white); }
 }
 
 .skill-bar-track {
-  height: 0.7rem;
-  background: var(--white);
-  border: 2px solid var(--ink);
+  height: 0.6rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -423,9 +456,6 @@ body[data-theme="dark"] .sticker--learning { background: var(--white); }
 
 /* ---------- GitHub stats widget ---------- */
 
-.sticker--github { background: #E8F4FF; }
-body[data-theme="dark"] .sticker--github { background: var(--white); }
-
 .github-status {
   margin: 0;
   font-size: 0.9rem;
@@ -435,14 +465,14 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
 .github-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
-  gap: 0.8rem;
+  gap: 0.7rem;
   margin-top: 1rem;
 }
 
 .github-stat {
-  background: var(--white);
-  border: 2px solid var(--ink);
-  border-radius: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   padding: 0.8rem;
   text-align: center;
 }
@@ -459,22 +489,71 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
   color: var(--ink-soft);
 }
 
+/* Loading skeleton while GitHub stats fetch */
+.github-skeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.skeleton-block {
+  height: 3.6rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--line) 25%, var(--paper) 50%, var(--line) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.3s ease-in-out infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ---------- Certifications ---------- */
+
+.cert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cert-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.7rem;
+}
+
+.cert-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.cert-name { font-weight: 600; font-size: 0.94rem; }
+.cert-year { font-size: 0.85rem; color: var(--ink-soft); white-space: nowrap; }
+
 /* ---------- Testimonials ---------- */
 
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.4rem;
+  gap: 1rem;
 }
 
 .testimonial {
   margin: 0;
-  background: var(--sunny);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+  border-left: 4px solid var(--sunny);
 }
 
 .testimonial p {
   margin: 0 0 0.7rem;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.6;
 }
 
@@ -486,14 +565,14 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
   color: var(--ink-soft);
 }
 
-/* ---------- Easter egg hint + toast ---------- */
+/* ---------- Easter egg toast (the other place emoji earns its keep) ---------- */
 
 .easter-hint {
   text-align: center;
   font-size: 0.75rem;
   color: var(--ink-soft);
   opacity: 0.5;
-  margin: -1.5rem 0 2rem;
+  margin: -1.4rem 0 1rem;
 }
 
 .easter-toast {
@@ -502,7 +581,7 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
   left: 50%;
   transform: translateX(-50%) translateY(1rem);
   background: var(--ink);
-  color: var(--white);
+  color: var(--paper);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.95rem;
@@ -542,17 +621,16 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
 .icon-btn {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   padding: 0.5rem 0.8rem;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--ink);
   border-radius: 999px;
   background: var(--white);
   color: var(--ink);
   cursor: pointer;
-  box-shadow: 3px 3px 0 var(--ink);
 }
 
-.icon-btn:hover { background: var(--sunny); color: var(--ink); }
+.icon-btn:hover { border-color: var(--coral); }
 
 .icon-btn:focus-visible {
   outline: 3px solid var(--sky);
@@ -573,15 +651,16 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
   font-weight: 600;
   font-size: 0.85rem;
   margin-top: 0.5rem;
+  color: var(--paper);
 }
 
 .form-input {
   font-family: var(--font-body);
   font-size: 0.95rem;
   padding: 0.6rem 0.8rem;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--line);
   border-radius: 10px;
-  background: var(--white);
+  background: var(--paper);
   color: var(--ink);
   resize: vertical;
 }
@@ -598,29 +677,25 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.65rem 1.3rem;
-  border: 3px solid var(--ink);
+  border: none;
   border-radius: 12px;
   background: var(--coral);
   color: var(--white);
   cursor: pointer;
-  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.1s ease;
 }
 
-.form-submit:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--ink); }
-.form-submit:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
+.form-submit:hover { transform: translateY(-1px); }
+.form-submit:active { transform: translateY(0); }
 
 .form-note {
   margin: 0.6rem 0 0;
   font-size: 0.8rem;
-  color: var(--white);
-  opacity: 0.85;
+  color: var(--paper);
+  opacity: 0.75;
 }
 
-/* ---------- Print stylesheet (used by the "Download PDF" button) ----------
-   window.print() opens the browser's print dialog, which lets the person
-   save as PDF. This stylesheet only applies during printing — it strips
-   away the colors/tilts/interactivity and lays the content out like a
-   plain, readable resume. */
+/* ---------- Print stylesheet (used by the "Download PDF" button) ---------- */
 
 @media print {
   body {
@@ -630,15 +705,14 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
 
   .floating-controls,
   .demo-panel,
-  .skills-grid button .skill-emoji,
   .contact-form,
-  .section-title,
   .easter-hint,
-  .status-badge {
+  .status-badge,
+  .project-filters {
     display: none !important;
   }
 
-  .sticker, .skill-sticker, .project-card {
+  .sticker--hero, .content-card, .skill-card, .project-card, .testimonial {
     transform: none !important;
     box-shadow: none !important;
     border: 1px solid #999 !important;
@@ -647,11 +721,9 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
     break-inside: avoid;
   }
 
-  .skills-grid {
-    display: block;
-  }
+  .skills-grid { display: block; }
 
-  .skill-sticker {
+  .skill-card {
     display: inline-block;
     margin: 0 0.4rem 0.4rem 0;
     padding: 0.3rem 0.7rem;
@@ -662,7 +734,8 @@ body[data-theme="dark"] .sticker--github { background: var(--white); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sticker, .project-card, .skill-sticker { transition: none; }
+  .skill-card, .project-card, .form-submit { transition: none; }
   .demo-box.animating { animation: none; }
   .sort-bar { transition: none; }
+  .skeleton-block { animation: none; }
 }
