@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name — Digital Resume</title>
+<title>Dharel Khin Melegrito — Digital Resume</title>
+<meta name="description" content="4th year IT student looking for an online OJT. Every skill on this page is clickable — click it and it actually runs.">
+
+<!-- Open Graph tags: control how this looks when shared on Messenger, Discord, LinkedIn, etc. -->
+<meta property="og:title" content="Dharel Khin Melegrito — Digital Resume">
+<meta property="og:description" content="4th year IT student looking for an online OJT. Every skill on this page is clickable — click it and it actually runs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://icedtoffe.github.io/digital-resume/">
+<!-- og:image needs a real hosted image (1200x630px works best) — add one once you have a screenshot or banner -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,20 +21,20 @@
 <body>
 
   <div class="floating-controls">
-    <button class="icon-btn" id="themeToggle" aria-label="Palitan ang tema">🌙</button>
-    <button class="icon-btn icon-btn--pdf" id="downloadPdf" aria-label="I-download bilang PDF">⬇️ PDF</button>
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+    <button class="icon-btn" id="downloadPdf" aria-label="Download as PDF">Download PDF</button>
   </div>
 
   <main>
 
-    <section class="sticker sticker--hero tilt-a">
-      <h1>Hi, I'm Dharel Khin Melegrito! </h1>
+    <section class="sticker--hero">
+      <h1>Hi, I'm Dharel Khin Melegrito</h1>
       <p class="hero-role">4th Year IT Student</p>
       <p class="hero-tagline">Looking for an online OJT. Here's what I can actually do, not just a list of words.</p>
       <span class="status-badge" id="statusBadge" data-status="open">🟢 Open for OJT — Aug 2026</span>
     </section>
 
-    <section class="sticker tilt-b">
+    <section class="content-card">
       <h2>About me</h2>
       <p class="body-text">
         I like building small, honest projects instead of copying templates.
@@ -34,7 +43,7 @@
       </p>
     </section>
 
-    <section class="sticker sticker--learning tilt-a">
+    <section class="content-card">
       <h2>Currently learning</h2>
       <p class="body-text">
         I'm working through <strong>React</strong> right now, because I want to
@@ -44,34 +53,37 @@
       </p>
     </section>
 
+    <section class="content-card">
+      <h2>Certifications</h2>
+      <ul class="cert-list" id="certList">
+        <li class="cert-item">
+          <span class="cert-name">Responsive Web Design — freeCodeCamp</span>
+          <span class="cert-year">2025</span>
+        </li>
+        <li class="cert-item">
+          <span class="cert-name">JavaScript Algorithms and Data Structures — freeCodeCamp</span>
+          <span class="cert-year">2025</span>
+        </li>
+      </ul>
+      <p class="body-text small" style="margin-top:0.9rem;">Replace these with your real certificates, or remove the section if you don't have any yet.</p>
+    </section>
+
     <section class="skills-section">
-      <h2 class="section-title">Skills — click one!</h2>
+      <h2 class="section-title">Skills — click one</h2>
 
       <div class="skills-grid" id="skillsGrid">
-        <button class="skill-sticker skill--coral tilt-a" data-skill="html">
-          <span class="skill-emoji">🏗️</span> HTML
-        </button>
-        <button class="skill-sticker skill--sky tilt-b" data-skill="css">
-          <span class="skill-emoji">🎨</span> CSS Animation
-        </button>
-        <button class="skill-sticker skill--sunny tilt-a" data-skill="js">
-          <span class="skill-emoji">⚡</span> JavaScript
-        </button>
-        <button class="skill-sticker skill--grass tilt-b" data-skill="responsive">
-          <span class="skill-emoji">📱</span> Responsive Design
-        </button>
-        <button class="skill-sticker skill--coral tilt-b" data-skill="git">
-          <span class="skill-emoji">🌱</span> Git &amp; GitHub
-        </button>
-        <button class="skill-sticker skill--sky tilt-a" data-skill="sort">
-          <span class="skill-emoji">🧩</span> Problem Solving
-        </button>
+        <button class="skill-card" data-skill="html" data-accent="coral">HTML</button>
+        <button class="skill-card" data-skill="css" data-accent="sky">CSS Animation</button>
+        <button class="skill-card" data-skill="js" data-accent="sunny">JavaScript</button>
+        <button class="skill-card" data-skill="responsive" data-accent="grass">Responsive Design</button>
+        <button class="skill-card" data-skill="git" data-accent="coral">Git &amp; GitHub</button>
+        <button class="skill-card" data-skill="sort" data-accent="sky">Problem Solving</button>
       </div>
 
       <div class="demo-panel" id="demoPanel" hidden>
         <div class="demo-header">
-          <span id="demoTitle">🎮 Tara, subukan!</span>
-          <button id="closeDemo" aria-label="Isara">✕</button>
+          <span id="demoTitle">Try it</span>
+          <button id="closeDemo" aria-label="Close">✕</button>
         </div>
         <div class="demo-body" id="demoBody"></div>
       </div>
@@ -79,24 +91,29 @@
       <div class="skill-bars" id="skillBars"></div>
     </section>
 
-    <section class="sticker sticker--github tilt-b" id="githubStats" data-username="IcedToffe">
-      <h2>🐙 GitHub Activity</h2>
-      <p class="github-status" id="githubStatus">Kumukuha ng data mula GitHub...</p>
+    <section class="content-card" id="githubStats" data-username="IcedToffe">
+      <h2>GitHub Activity</h2>
+      <p class="github-status" id="githubStatus">Loading data from GitHub…</p>
+      <div class="github-skeleton" id="githubSkeleton">
+        <div class="skeleton-block"></div>
+        <div class="skeleton-block"></div>
+        <div class="skeleton-block"></div>
+      </div>
       <div class="github-grid" id="githubGrid" hidden></div>
     </section>
 
     <section class="testimonials-section">
       <h2 class="section-title">What people say</h2>
       <div class="testimonials-grid">
-        <blockquote class="sticker testimonial tilt-a">
+        <blockquote class="testimonial">
           <p>"Siya lang gumawa ng buong group project namin, totoo 'to."</p>
           <cite>— Groupmate, IT 4th year</cite>
         </blockquote>
-        <blockquote class="sticker testimonial tilt-b">
+        <blockquote class="testimonial">
           <p>"Palagi siyang nagtatanong pag hindi niya gets — mabilis matuto."</p>
           <cite>— Professor, Web Development</cite>
         </blockquote>
-        <blockquote class="sticker testimonial tilt-a">
+        <blockquote class="testimonial">
           <p>"Mabait tulungan pag may hirap ang ibang kaklase sa coding."</p>
           <cite>— Classmate</cite>
         </blockquote>
@@ -106,32 +123,52 @@
     <section class="projects-section">
       <h2 class="section-title">Projects</h2>
 
-      <div class="projects-grid">
-        <a class="sticker project-card tilt-b" href="https://github.com/IcedToffe">
-          <h3>Alin Ang Pipiliin Mo? 🚌</h3>
+      <div class="project-filters" id="projectFilters">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="game">Games</button>
+        <button class="filter-chip" data-filter="data">Data / JSON</button>
+        <button class="filter-chip" data-filter="site">This site</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        <a class="project-card" href="https://github.com/IcedToffe" data-tags="game">
+          <h3>Alin Ang Pipiliin Mo?</h3>
           <p class="body-text small">A Filipino "would you rather" game with a hidden bonus round and reactions for every choice.</p>
+          <div class="project-tags">
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">Game</span>
+          </div>
           <span class="project-link">View on GitHub →</span>
         </a>
 
-        <a class="sticker project-card tilt-a" href="#" data-placeholder="github">
-          <h3>Anong Lutuin Ngayon? 🍲</h3>
+        <a class="project-card" href="#" data-placeholder="github" data-tags="data">
+          <h3>Anong Lutuin Ngayon?</h3>
           <p class="body-text small">A random Pinoy recipe picker with search, filters, and favorites — from my own JSON dataset.</p>
+          <div class="project-tags">
+            <span class="project-tag">JavaScript</span>
+            <span class="project-tag">JSON</span>
+          </div>
           <span class="project-link">View on GitHub →</span>
         </a>
 
-        <a class="sticker project-card tilt-b" href="#" data-placeholder="github">
-          <h3>This site 👋</h3>
+        <a class="project-card" href="#" data-placeholder="github" data-tags="site">
+          <h3>This site</h3>
           <p class="body-text small">You're looking at it. Built to prove the skills above, not just list them.</p>
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS</span>
+            <span class="project-tag">JavaScript</span>
+          </div>
           <span class="project-link">View on GitHub →</span>
         </a>
       </div>
     </section>
 
-    <section class="sticker sticker--contact tilt-a">
+    <section class="content-card content-card--contact">
       <h2>Let's talk</h2>
       <div class="contact-pills">
-        <a class="pill" href="https://github.com/IcedToffe">🐙 github.com/IcedToffe</a>
-        <a class="pill" href="#" data-placeholder="linkedin">💼 linkedin.com/in/yourname</a>
+        <a class="pill" href="https://github.com/IcedToffe">github.com/IcedToffe</a>
+        <a class="pill" href="#" data-placeholder="linkedin">linkedin.com/in/yourname</a>
       </div>
 
       <form class="contact-form" id="contactForm" data-to="khin@gmail.com">
@@ -144,7 +181,7 @@
         <label class="form-label" for="cfMessage">Mensahe</label>
         <textarea class="form-input" id="cfMessage" name="message" rows="4" required></textarea>
 
-        <button class="form-submit" type="submit">Ipadala ✉️</button>
+        <button class="form-submit" type="submit">Ipadala</button>
         <p class="form-note" id="formNote">Bubukas ang sarili mong email app na may pre-filled na mensahe.</p>
       </form>
     </section>
