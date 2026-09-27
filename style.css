@@ -497,6 +497,10 @@ main {
   margin-top: 1rem;
 }
 
+.github-skeleton[hidden] {
+  display: none;
+}
+
 .skeleton-block {
   height: 3.6rem;
   border-radius: 10px;
