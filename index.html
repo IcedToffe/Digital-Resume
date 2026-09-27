@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Digital Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="floating-controls">
+    <button class="icon-btn" id="themeToggle" aria-label="Palitan ang tema">🌙</button>
+    <button class="icon-btn icon-btn--pdf" id="downloadPdf" aria-label="I-download bilang PDF">⬇️ PDF</button>
+  </div>
+
+  <main>
+
+    <section class="sticker sticker--hero tilt-a">
+      <h1>Hi, I'm Dharel Khin Melegrito! </h1>
+      <p class="hero-role">4th Year IT Student</p>
+      <p class="hero-tagline">Looking for an online OJT. Here's what I can actually do, not just a list of words.</p>
+      <span class="status-badge" id="statusBadge" data-status="open">🟢 Open for OJT — Aug 2026</span>
+    </section>
+
+    <section class="sticker tilt-b">
+      <h2>About me</h2>
+      <p class="body-text">
+        I like building small, honest projects instead of copying templates.
+        Every skill below is clickable. Click it and it actually runs,
+        right here on the page.
+      </p>
+    </section>
+
+    <section class="sticker sticker--learning tilt-a">
+      <h2>Currently learning</h2>
+      <p class="body-text">
+        I'm working through <strong>React</strong> right now, because I want to
+        understand how bigger apps get built once a project outgrows plain
+        HTML/CSS/JS. I don't know everything yet but I know how to learn,
+        and this whole site is proof of that.
+      </p>
+    </section>
+
+    <section class="skills-section">
+      <h2 class="section-title">Skills — click one!</h2>
+
+      <div class="skills-grid" id="skillsGrid">
+        <button class="skill-sticker skill--coral tilt-a" data-skill="html">
+          <span class="skill-emoji">🏗️</span> HTML
+        </button>
+        <button class="skill-sticker skill--sky tilt-b" data-skill="css">
+          <span class="skill-emoji">🎨</span> CSS Animation
+        </button>
+        <button class="skill-sticker skill--sunny tilt-a" data-skill="js">
+          <span class="skill-emoji">⚡</span> JavaScript
+        </button>
+        <button class="skill-sticker skill--grass tilt-b" data-skill="responsive">
+          <span class="skill-emoji">📱</span> Responsive Design
+        </button>
+        <button class="skill-sticker skill--coral tilt-b" data-skill="git">
+          <span class="skill-emoji">🌱</span> Git &amp; GitHub
+        </button>
+        <button class="skill-sticker skill--sky tilt-a" data-skill="sort">
+          <span class="skill-emoji">🧩</span> Problem Solving
+        </button>
+      </div>
+
+      <div class="demo-panel" id="demoPanel" hidden>
+        <div class="demo-header">
+          <span id="demoTitle">🎮 Tara, subukan!</span>
+          <button id="closeDemo" aria-label="Isara">✕</button>
+        </div>
+        <div class="demo-body" id="demoBody"></div>
+      </div>
+
+      <div class="skill-bars" id="skillBars"></div>
+    </section>
+
+    <section class="sticker sticker--github tilt-b" id="githubStats" data-username="IcedToffe">
+      <h2>🐙 GitHub Activity</h2>
+      <p class="github-status" id="githubStatus">Kumukuha ng data mula GitHub...</p>
+      <div class="github-grid" id="githubGrid" hidden></div>
+    </section>
+
+    <section class="testimonials-section">
+      <h2 class="section-title">What people say</h2>
+      <div class="testimonials-grid">
+        <blockquote class="sticker testimonial tilt-a">
+          <p>"Siya lang gumawa ng buong group project namin, totoo 'to."</p>
+          <cite>— Groupmate, IT 4th year</cite>
+        </blockquote>
+        <blockquote class="sticker testimonial tilt-b">
+          <p>"Palagi siyang nagtatanong pag hindi niya gets — mabilis matuto."</p>
+          <cite>— Professor, Web Development</cite>
+        </blockquote>
+        <blockquote class="sticker testimonial tilt-a">
+          <p>"Mabait tulungan pag may hirap ang ibang kaklase sa coding."</p>
+          <cite>— Classmate</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-grid">
+        <a class="sticker project-card tilt-b" href="https://github.com/IcedToffe">
+          <h3>Alin Ang Pipiliin Mo? 🚌</h3>
+          <p class="body-text small">A Filipino "would you rather" game with a hidden bonus round and reactions for every choice.</p>
+          <span class="project-link">View on GitHub →</span>
+        </a>
+
+        <a class="sticker project-card tilt-a" href="#" data-placeholder="github">
+          <h3>Anong Lutuin Ngayon? 🍲</h3>
+          <p class="body-text small">A random Pinoy recipe picker with search, filters, and favorites — from my own JSON dataset.</p>
+          <span class="project-link">View on GitHub →</span>
+        </a>
+
+        <a class="sticker project-card tilt-b" href="#" data-placeholder="github">
+          <h3>This site 👋</h3>
+          <p class="body-text small">You're looking at it. Built to prove the skills above, not just list them.</p>
+          <span class="project-link">View on GitHub →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="sticker sticker--contact tilt-a">
+      <h2>Let's talk</h2>
+      <div class="contact-pills">
+        <a class="pill" href="https://github.com/IcedToffe">🐙 github.com/IcedToffe</a>
+        <a class="pill" href="#" data-placeholder="linkedin">💼 linkedin.com/in/yourname</a>
+      </div>
+
+      <form class="contact-form" id="contactForm" data-to="khin@gmail.com">
+        <label class="form-label" for="cfName">Pangalan</label>
+        <input class="form-input" type="text" id="cfName" name="name" required>
+
+        <label class="form-label" for="cfEmail">Email mo</label>
+        <input class="form-input" type="email" id="cfEmail" name="email" required>
+
+        <label class="form-label" for="cfMessage">Mensahe</label>
+        <textarea class="form-input" id="cfMessage" name="message" rows="4" required></textarea>
+
+        <button class="form-submit" type="submit">Ipadala ✉️</button>
+        <p class="form-note" id="formNote">Bubukas ang sarili mong email app na may pre-filled na mensahe.</p>
+      </form>
+    </section>
+
+  </main>
+
+  <p class="easter-hint">psst. may lihim dito. 👀</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
