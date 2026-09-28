@@ -1,8 +1,8 @@
-# Digital Resume — Sticker Notebook Edition
+# Digital Resume 
 
-A colorful, playful personal resume site — styled like a notebook covered
+A colorful, playful personal resume site. Styled like a notebook covered
 in stickers, matching the same personality as my other two projects. Instead
-of a static list of skills, each one is clickable — click it and it actually
+of a static list of skills, each one is clickable. Click it and it actually
 runs, showing a live demo right on the page.
 
 **[Live demo →](#)** *(add your deployed link here once you host it)*
