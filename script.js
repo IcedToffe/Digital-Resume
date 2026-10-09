@@ -107,6 +107,7 @@ function renderSkillBars() {
       <span class="skill-bar-track">
         <span class="skill-bar-fill" style="width: 0%"></span>
       </span>
+      <span class="skill-bar-value">${value}%</span>
     `;
     container.appendChild(row);
 
