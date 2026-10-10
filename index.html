@@ -35,19 +35,26 @@
   <main>
 
     <section class="sticker--hero">
-      <h1>Hi, I'm Dharel Khin Melegrito</h1>
-      <p class="hero-role">4th Year IT Student</p>
-      <p class="hero-tagline">Looking for an online OJT. Here's what I can actually do, not just a list of words.</p>
-      <span class="status-badge" id="statusBadge" data-status="open">🟢 Open for OJT — Aug 2026</span>
+      <figure class="hero-photo" data-initials="DK">
+        <!-- Save your picture as photo.jpg next to index.html. If it's missing, the initials show instead. -->
+        <img src="photo.jpg" alt="Photo of Dharel Khin Melegrito">
+      </figure>
+      <div class="hero-text">
+        <h1>Hi, I'm Dharel Khin Melegrito</h1>
+        <p class="hero-role">4th Year IT Student</p>
+        <p class="hero-tagline">Looking for an online OJT. Here's what I can actually do, not just a list of words.</p>
+        <span class="status-badge" id="statusBadge" data-status="open">🟢 Open for OJT — Aug 2026</span>
+      </div>
     </section>
 
     <div class="intro-grid">
     <section class="content-card">
       <h2>About me</h2>
       <p class="body-text">
-        I like building small, honest projects instead of copying templates.
-        Every skill below is clickable. Click it and it actually runs,
-        right here on the page.
+        I'm a 4th-year IT student looking for an online OJT starting August 2026.
+        So far I've built a Filipino "would you rather" game, a recipe picker
+        powered by my own JSON dataset, and this site. Every skill below is
+        clickable, so you can see it run instead of taking my word for it.
       </p>
     </section>
 
@@ -96,24 +103,6 @@
       <div class="github-grid" id="githubGrid" hidden></div>
     </section>
 
-    <section class="testimonials-section">
-      <h2 class="section-title">What people say</h2>
-      <div class="testimonials-grid">
-        <blockquote class="testimonial">
-          <p>"Siya lang gumawa ng buong group project namin, totoo 'to."</p>
-          <cite>— Groupmate, IT 4th year</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>"Palagi siyang nagtatanong pag hindi niya gets — mabilis matuto."</p>
-          <cite>— Professor, Web Development</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          <p>"Mabait tulungan pag may hirap ang ibang kaklase sa coding."</p>
-          <cite>— Classmate</cite>
-        </blockquote>
-      </div>
-    </section>
-
     <section class="projects-section" id="projects">
       <h2 class="section-title">Projects</h2>
 
@@ -125,7 +114,7 @@
       </div>
 
       <div class="projects-grid" id="projectsGrid">
-        <a class="project-card" href="https://github.com/IcedToffe" data-tags="game">
+        <article class="project-card" data-tags="game">
           <figure class="project-shot">
             <img src="screenshots/alin-ang-pipiliin-mo.png" alt="Screenshot of the Alin Ang Pipiliin Mo game" loading="lazy">
           </figure>
@@ -135,10 +124,13 @@
             <span class="project-tag">JavaScript</span>
             <span class="project-tag">Game</span>
           </div>
-          <span class="project-link">View on GitHub →</span>
-        </a>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/IcedToffe" data-hide-if-empty>View on GitHub →</a>
+            <a class="project-link" href="#" data-hide-if-empty>Live demo →</a>
+          </div>
+        </article>
 
-        <a class="project-card" href="#" data-placeholder="github" data-tags="data">
+        <article class="project-card" data-tags="data">
           <figure class="project-shot">
             <img src="screenshots/anong-lutuin-ngayon.png" alt="Screenshot of the Anong Lutuin Ngayon recipe picker" loading="lazy">
           </figure>
@@ -148,10 +140,13 @@
             <span class="project-tag">JavaScript</span>
             <span class="project-tag">JSON</span>
           </div>
-          <span class="project-link">View on GitHub →</span>
-        </a>
+          <div class="project-links">
+            <a class="project-link" href="#" data-hide-if-empty>View on GitHub →</a>
+            <a class="project-link" href="#" data-hide-if-empty>Live demo →</a>
+          </div>
+        </article>
 
-        <a class="project-card" href="#" data-placeholder="github" data-tags="site">
+        <article class="project-card" data-tags="site">
           <figure class="project-shot">
             <img src="screenshots/this-site.png" alt="Screenshot of this digital resume site" loading="lazy">
           </figure>
@@ -162,8 +157,11 @@
             <span class="project-tag">CSS</span>
             <span class="project-tag">JavaScript</span>
           </div>
-          <span class="project-link">View on GitHub →</span>
-        </a>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/IcedToffe/digital-resume" data-hide-if-empty>View on GitHub →</a>
+            <a class="project-link" href="https://icedtoffe.github.io/digital-resume/" data-hide-if-empty>Live demo →</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -198,7 +196,7 @@
       <h2>Let's talk</h2>
       <div class="contact-pills">
         <a class="pill" href="https://github.com/IcedToffe">github.com/IcedToffe</a>
-        <a class="pill" href="#" data-placeholder="linkedin">linkedin.com/in/yourname</a>
+        <a class="pill" href="#" data-hide-if-empty>linkedin.com/in/yourname</a>
         <button class="pill pill-btn" type="button" id="copyEmail">Copy email</button>
       </div>
 
