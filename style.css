@@ -747,6 +747,39 @@ body[data-theme="dark"] .section-title {
 .icon-btn:hover { background: var(--sunny); color: #1B1533; border-color: #1B1533; }
 .icon-btn:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
 
+/* ---------- Top navigation (desktop only) ---------- */
+
+.top-nav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: none;
+  gap: 0.2rem;
+  padding: 0.3rem;
+  background: var(--surface);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+}
+
+.top-nav a {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+}
+
+.top-nav a:hover { background: var(--sunny); color: #1B1533; }
+.top-nav a:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+
+@media (min-width: 1100px) { .top-nav { display: flex; } }
+
+section[id] { scroll-margin-top: 4.5rem; }
+
+.pill-btn { border: none; font-family: var(--font-body); cursor: pointer; }
+
 /* ---------- Easter egg ---------- */
 
 .easter-hint {
@@ -805,6 +838,7 @@ body[data-theme="dark"] .section-title {
   body { background: #fff; color: #000; }
 
   .floating-controls,
+  .top-nav,
   .demo-panel,
   .contact-form,
   .easter-hint,
