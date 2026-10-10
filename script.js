@@ -451,3 +451,18 @@ document.querySelectorAll(".project-shot img").forEach((img) => {
   img.addEventListener("error", removeShot);
   if (img.complete && img.naturalWidth === 0) removeShot();
 });
+
+
+// ---------- Copy email button ----------
+const copyBtn = document.getElementById("copyEmail");
+copyBtn.addEventListener("click", async () => {
+  const email = contactForm.dataset.to;
+  try {
+    await navigator.clipboard.writeText(email);
+    copyBtn.textContent = "Copied! ✓";
+  } catch (err) {
+    // Fallback (e.g. opened as a local file): show the address so it can be copied by hand.
+    copyBtn.textContent = email;
+  }
+  setTimeout(() => (copyBtn.textContent = "Copy email"), 2000);
+});
