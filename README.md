@@ -22,7 +22,8 @@ a typed-out git log, and a bubble sort visualization.
 - **Availability status badge** — edit the text/color in `index.html` to reflect whether you're open for OJT
 - **"Currently learning" section** — shows growth, not just finished skills
 - **Live GitHub stats** — pulls your real public repo count, followers, and latest repo via GitHub's public API (no login needed)
-- **Testimonials section** — swap the placeholder quotes for real ones from professors/groupmates
+- **Hero photo** — save your picture as `photo.jpg` (initials show if it's missing)
+- **Project screenshots** — put 3 images in a `screenshots/` folder (see below)
 - **Small easter egg** — type "ojt" anywhere on the page
 - Dark/light theme toggle, saved with `localStorage`
 - Downloadable PDF via the browser's print dialog (dedicated print stylesheet)
@@ -36,7 +37,8 @@ a typed-out git log, and a bubble sort visualization.
 - The `data-username="yourusername"` attribute on `#githubStats` → your real GitHub username
 - The `data-to="you@email.com"` attribute on the contact form → your real email
 - The GitHub/LinkedIn links (currently `#`) in the projects and contact sections
-- The testimonial quotes → real ones if you can get them, or remove the section if you can't yet
+- Project links and certificate links: replace each `#` with a real URL. Links left as `#` hide themselves
+- `photo.jpg` and the 3 files in `screenshots/` (`alin-ang-pipiliin-mo.png`, `anong-lutuin-ngayon.png`, `this-site.png`)
 - The skill bar percentages in `script.js` (`skillLevels`) → your own honest self-rating
 - The status badge text/emoji in the hero section
 
@@ -65,14 +67,6 @@ interview even if you don't implement it.
 
 Just open `index.html` in your browser — no server or build step needed
 (unlike the recipe picker project, this one doesn't fetch any external files).
-
-## Before you push this
-
-Update the placeholders in `index.html`:
-- Your real name, bio, and role in `about.js`
-- Your actual GitHub links in `projects.js` (replace the `#` hrefs)
-- Your real email, GitHub, and LinkedIn in `contact.js`
-
 
 ## Author
 
