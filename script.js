@@ -466,3 +466,18 @@ copyBtn.addEventListener("click", async () => {
   }
   setTimeout(() => (copyBtn.textContent = "Copy email"), 2000);
 });
+
+
+// ---------- Hide any link that still has a placeholder "#" ----------
+// Add data-hide-if-empty to a link; until you paste a real URL it stays hidden.
+document.querySelectorAll("a[data-hide-if-empty]").forEach((link) => {
+  if (link.getAttribute("href") === "#") link.hidden = true;
+});
+
+// ---------- Hero photo: fall back to initials if photo.jpg is missing ----------
+const heroImg = document.querySelector(".hero-photo img");
+if (heroImg) {
+  const dropPhoto = () => heroImg.remove();
+  heroImg.addEventListener("error", dropPhoto);
+  if (heroImg.complete && heroImg.naturalWidth === 0) dropPhoto();
+}
