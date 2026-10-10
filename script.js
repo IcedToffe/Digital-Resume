@@ -166,6 +166,9 @@ async function loadGitHubStats() {
       `Couldn't load GitHub data for "${username}". ` +
       `Double check the data-username attribute on #githubStats.`;
     skeleton.hidden = true;
+    // Don't show an error on a public resume: hide the whole card instead.
+    // The reason is still in the console (F12) so you can fix it.
+    section.hidden = true;
     console.error("GitHub stats failed:", err);
   }
 }
@@ -435,3 +438,16 @@ function runSortDemo() {
     step();
   });
 }
+
+
+// ---------- Certificates: hide "Verify" until a real link is added ----------
+document.querySelectorAll(".cert-verify").forEach((link) => {
+  if (link.getAttribute("href") === "#") link.hidden = true;
+});
+
+// ---------- Project screenshots: remove the slot if the image is missing ----------
+document.querySelectorAll(".project-shot img").forEach((img) => {
+  const removeShot = () => img.closest(".project-shot").remove();
+  img.addEventListener("error", removeShot);
+  if (img.complete && img.naturalWidth === 0) removeShot();
+});
